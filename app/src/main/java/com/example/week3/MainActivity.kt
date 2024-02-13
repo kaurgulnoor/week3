@@ -1,6 +1,8 @@
 package com.example.week3
 
 import android.os.Bundle
+import android.widget.ImageView
+import android.widget.Switch
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.benchmark.perfetto.ExperimentalPerfettoTraceProcessorApi
@@ -21,10 +23,31 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.week3.ui.theme.Week3Theme
+import java.util.Locale
+
+
+private lateinit var flagImage: ImageView
+private lateinit var languageSwitch: Switch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        flagImage = findViewById(R.id.flag_image)
+        languageSwitch = findViewById(R.id.language_switch)
+
+        languageSwitch.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                // Set flag image based on current device language
+                val currentLanguage = Locale.getDefault().language
+                val flagResource = resources.getIdentifier("flag_$currentLanguage", "drawable", packageName)
+                if (flagResource != 0) {
+                    flagImage.setImageResource(flagResource)
+                }
+            } else {
+                // Set default flag image (e.g., English)
+                flagImage.setImageResource(R.drawable.flag_en)
+            }
+        }
         setContent {
             Week3Theme {
                 // A surface container using the 'background' color from the theme
@@ -63,28 +86,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     }
 }
 
-
-fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
-
-    flagImage = findViewById(R.id.flag_image)
-    languageSwitch = findViewById(R.id.language_switch)
-
-    languageSwitch.setOnCheckedChangeListener { _, isChecked ->
-        if (isChecked) {
-            // Set flag image based on current device language
-            val currentLanguage = Locale.getDefault().language
-            val flagResource = resources.getIdentifier("flag_$currentLanguage", "drawable", packageName)
-            if (flagResource != 0) {
-                flagImage.setImageResource(flagResource)
-            }
-        } else {
-            // Set default flag image (e.g., English)
-            flagImage.setImageResource(R.drawable.flag_en)
-        }
-    }
-}
 
 @Preview(showBackground = true)
 @Composable

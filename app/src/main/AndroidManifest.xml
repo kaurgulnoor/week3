@@ -21,6 +21,18 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+
+                <ImageView
+                    android:id="@+id/flag_image"
+                    android:srcCompat="@drawable/flag"
+
+                />
+
+                <Switch
+                    android:id="@+id/language_switch"
+                    android:text="@string/switch_text"
+
+                />
             </intent-filter>
         </activity>
     </application>
