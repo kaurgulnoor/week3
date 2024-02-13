@@ -16,6 +16,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -41,7 +42,7 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalPerfettoTraceProcessorApi::class)
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-    
+
     Button(
         onClick = { /*TODO*/ },
         modifier = Modifier.padding(horizontal = 17.5.dp) // Half of spacing added to each side
@@ -59,6 +60,29 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         modifier = Modifier.padding(horizontal = 17.5.dp) // Half of spacing added to each side
     ) {
         Text(text = "Button3")
+    }
+}
+
+
+fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_main)
+
+    flagImage = findViewById(R.id.flag_image)
+    languageSwitch = findViewById(R.id.language_switch)
+
+    languageSwitch.setOnCheckedChangeListener { _, isChecked ->
+        if (isChecked) {
+            // Set flag image based on current device language
+            val currentLanguage = Locale.getDefault().language
+            val flagResource = resources.getIdentifier("flag_$currentLanguage", "drawable", packageName)
+            if (flagResource != 0) {
+                flagImage.setImageResource(flagResource)
+            }
+        } else {
+            // Set default flag image (e.g., English)
+            flagImage.setImageResource(R.drawable.flag_en)
+        }
     }
 }
 
