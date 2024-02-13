@@ -5,12 +5,15 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.benchmark.perfetto.ExperimentalPerfettoTraceProcessorApi
 import androidx.benchmark.perfetto.Row
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -38,19 +41,25 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalPerfettoTraceProcessorApi::class)
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Button(onClick = { /*TODO*/ }) {
+    
+    Button(
+        onClick = { /*TODO*/ },
+        modifier = Modifier.padding(horizontal = 17.5.dp) // Half of spacing added to each side
+    ) {
         Text(text = "Button1")
     }
-    Spacer(modifier = Modifier.width(35.dp)) // Add spacer between buttons
-    Button(onClick = { /*TODO*/ }) {
+    Button(
+        onClick = { /*TODO*/ },
+        modifier = Modifier.padding(horizontal = 17.5.dp) // Half of spacing added to each side
+    ) {
         Text(text = "Button2")
     }
-    Spacer(modifier = Modifier.width(35.dp)) // Add spacer between buttons
-    Button(onClick = { /*TODO*/ }) {
+    Button(
+        onClick = { /*TODO*/ },
+        modifier = Modifier.padding(horizontal = 17.5.dp) // Half of spacing added to each side
+    ) {
         Text(text = "Button3")
     }
-    Spacer(modifier = Modifier.width(35.dp)) // Add spacer between buttons
-
 }
 
 @Preview(showBackground = true)
