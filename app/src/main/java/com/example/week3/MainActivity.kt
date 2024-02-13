@@ -38,19 +38,18 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalPerfettoTraceProcessorApi::class)
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-        Button(onClick = { /*TODO*/ }) {
-            Text(text = "Button1")
-        }
-        Spacer(modifier = Modifier.width(35.dp)) // Add spacer between buttons
-        Button(onClick = { /*TODO*/ }) {
-            Text(text = "Button2")
-        }
-        Spacer(modifier = Modifier.width(35.dp)) // Add spacer between buttons
-
-        Button(onClick = { /*TODO*/ }) {
-            Text(text = "Button3")
-        }
-        Spacer(modifier = Modifier.width(35.dp)) // Add spacer between buttons
+    Button(onClick = { /*TODO*/ }) {
+        Text(text = "Button1")
+    }
+    Spacer(modifier = Modifier.width(35.dp)) // Add spacer between buttons
+    Button(onClick = { /*TODO*/ }) {
+        Text(text = "Button2")
+    }
+    Spacer(modifier = Modifier.width(35.dp)) // Add spacer between buttons
+    Button(onClick = { /*TODO*/ }) {
+        Text(text = "Button3")
+    }
+    Spacer(modifier = Modifier.width(35.dp)) // Add spacer between buttons
 
 }
 
