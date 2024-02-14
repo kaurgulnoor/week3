@@ -1,6 +1,7 @@
 package com.example.week3
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import android.widget.Switch
 import androidx.activity.ComponentActivity
@@ -86,6 +87,25 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     }
 }
 
+fun onStart(){
+    Log.d("My app", "onStart called")
+}
+
+fun onResume(){
+    Log.d("My App", "onResume called")
+}
+
+fun onPause(){
+    Log.d("My App", "onPause called")
+}
+
+fun onStop(){
+    Log.d("My App", "onStop called")
+}
+
+fun onDestroy(){
+    Log.d("My App", "onDestroy called")
+}
 
 @Preview(showBackground = true)
 @Composable
