@@ -2,6 +2,8 @@ package com.example.week3
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Switch
 import androidx.activity.ComponentActivity
@@ -18,6 +20,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -35,6 +38,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         flagImage = findViewById(R.id.flag_image)
         languageSwitch = findViewById(R.id.language_switch)
+        lateinit var emailEditText: EditText
+        lateinit var passwordEditText: EditText
+        lateinit var submitButton: Button
 
         languageSwitch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
@@ -47,6 +53,49 @@ class MainActivity : ComponentActivity() {
             } else {
                 // Set default flag image (e.g., English)
                 flagImage.setImageResource(R.drawable.flag_en)
+            }
+        }
+
+
+        fun onCreate(savedInstanceState: Bundle?) {
+            onCreate(savedInstanceState)
+            setContentView(R.layout.activity_login) // Replace with your layout resource ID
+
+            emailEditText = findViewById(R.id.email_editText)
+            passwordEditText = findViewById(R.id.password_editText)
+            submitButton = findViewById(R.id.submit_button)
+
+            submitButton.setOnClickListener {
+                val email = emailEditText.text.toString()
+                val password = passwordEditText.text.toString()
+
+                // Perform login logic here (e.g., check credentials, display error messages)
+                // For now, we'll just show a toast message
+                Toast.makeText(this, "Email: $email, Password: $password", Toast.LENGTH_SHORT).show()
+            }
+
+            setContentView(R.layout.activity_login) // Replace with your layout resource ID
+
+            emailEditText = findViewById(R.id.email_editText)
+            passwordEditText = findViewById(R.id.password_editText)
+            submitButton = findViewById(R.id.submit_button)
+
+            // Pre-fill email address from SharedPreferences
+            val savedEmail = sharedPreferences.getString("LoginName", "")
+            emailEditText.setText(savedEmail)
+
+            submitButton.setOnClickListener {
+                val email = emailEditText.text.toString()
+                val password = passwordEditText.text.toString()
+
+                // Perform login logic here (e.g., check credentials, display error messages)
+                // For now, we'll just show a toast message
+                Toast.makeText(this, "Email: $email, Password: $password", Toast.LENGTH_SHORT).show()
+
+                // Save the new email address to SharedPreferences
+                val editor = sharedPreferences.edit()
+                editor.putString("LoginName", email)
+                editor.apply() // Make sure to use apply() for asynchronous writing
             }
         }
         setContent {
@@ -66,7 +115,6 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalPerfettoTraceProcessorApi::class)
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-
     Button(
         onClick = { /*TODO*/ },
         modifier = Modifier.padding(horizontal = 17.5.dp) // Half of spacing added to each side
@@ -106,6 +154,9 @@ fun onStop(){
 fun onDestroy(){
     Log.d("My App", "onDestroy called")
 }
+
+
+
 
 @Preview(showBackground = true)
 @Composable
