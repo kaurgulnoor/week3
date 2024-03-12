@@ -1,5 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.EmmanuelsAndroidLabs" parent="Theme.Material3.DayNight.NoActionBar">
 
-    <style name="Theme.Week3" parent="android:Theme.Material.Light.NoActionBar" />
+        <item name="colorPrimary">@color/my_primary</item>
+        <item name="colorSecondary">@color/my_secondary</item>
+        <item name="android:statusBarColor">@color/my_statusbar</item>
+        <item name="android:textColor">@color/my_textColor</item>
+    </style>
+
+    <style name="Theme.EmmanuelsAndroidLabs" parent="Base.Theme.EmmanuelsAndroidLabs" />
 </resources>
